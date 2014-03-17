@@ -43,13 +43,11 @@ class REST {
 	}
 
 	/**
-	 * Returns the contents of a DELETE request
-	 * @return string
+	 * Returns true if recieved a DELETE request
+	 * @return true if the case 
 	 */
 	public function delete() {
-		if($this->method() == 'DELETE') {
-			return file_get_contents('php://input');
-		}
+		return true;
 	}
 
 	/**
