@@ -1,4 +1,4 @@
-## JSON POST with Codeigniter
+## REST handling with Codeigniter
 
 My experience has been that when dealing with front end frameworks, Codeigniter's handling of the POST data they send is awful. 
 This is an extraordinarily simple Codeigniter library which cleans up a little of the mess. 
@@ -8,17 +8,39 @@ This is an extraordinarily simple Codeigniter library which cleans up a little o
  * Add the library file to /application/libraries
  * Load as required:
 
- 	$this->load->library('json');
+ 	$this->load->library('rest');
 	
-#### Usage
+#### Usage example
 
-##### for PHP arrays:
+	//put request - string
+	if($put = $this->rest->put()){
+		echo 'put ' . $put; // should return string
+	}
 
-	$this->json->post();
-	//returns multimensional PHP array based on whatever JSON is passed in via post
+	//put request - JSON
+	if($put = $this->rest->putJSON()) {
+		echo "Put JSON \n";
+		print_r($put); //should return array
+	}
 
-##### for raw strings
+	//POST request - JSON
+	if($post = $this->rest->postJSON()) {
+		echo "Post JSON \n";
+		print_r($post); //should return array
+	}
 
-	$this->json->rawPost();
-	//returns string
+	//POST request - string 
+	elseif($post = $this->rest->post()){
+		echo 'post ' . $post; //should return string
+	}
 
+	//Delete request
+	elseif($this->rest->delete()){
+		echo 'delete';
+	}
+	
+	//Get request - just returns boolean if true
+	elseif($this->rest->get()) {
+		echo 'get';
+	}
+	
