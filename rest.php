@@ -47,7 +47,8 @@ class REST {
 	 * @return true if the case 
 	 */
 	public function delete() {
-		return true;
+		if($this->method() == 'DELETE')
+			return true;
 	}
 
 	/**
